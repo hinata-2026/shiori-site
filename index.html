@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHIORI｜時差に強い、旅程の数直線アプリ</title>
+<meta name="description" content="iPhone アプリ「SHIORI」。海外旅行の旅程を1日＝1本の時間の数直線で並べ、フライトの日付またぎ・時差・夏時間を自動で計算します。iCloud で旅行ごとに共有・共同編集できます。">
+<link rel="icon" href="images/icon.png">
+<style>
+  :root {
+    --bg: #ffffff;
+    --card: #f5f7fa;
+    --line: #e1e5eb;
+    --text: #15181d;
+    --muted: #646b75;
+    --accent: #1e64b4;
+    --warn: #d93025;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1116;
+      --card: #191d24;
+      --line: #2a303a;
+      --text: #f1f3f6;
+      --muted: #9aa2ad;
+      --accent: #5aa2f0;
+      --warn: #ff6b5e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 20px 72px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.85;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header {
+    padding: 56px 0 32px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -.01em; }
+  header p { margin: 0; color: var(--muted); font-size: 16px; }
+  h2 {
+    font-size: 19px;
+    margin: 44px 0 14px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+    line-height: 1.5;
+  }
+  h3 { font-size: 16px; margin: 0 0 4px; }
+  p, li { font-size: 15.5px; }
+  ul { padding-left: 1.3em; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 560px) {
+    .features { grid-template-columns: 1fr 1fr; }
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+  .shots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 8px 0 0;
+  }
+  @media (min-width: 640px) {
+    .shots { grid-template-columns: repeat(3, 1fr); }
+  }
+  figure { margin: 0; }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+  }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+  .note { color: var(--muted); font-size: 14px; }
+  .caution {
+    border-left: 4px solid var(--warn);
+    background: var(--card);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    margin: 14px 0;
+  }
+  .caution p { margin: 0; font-size: 14.5px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { width: 8.5em; font-weight: 700; color: var(--muted); }
+  .mail, .card p.mail { font-size: 17px; font-weight: 700; word-break: break-all; margin-bottom: 6px; }
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .lead { font-size: 16px; }
+  .app-icon { width: 76px; height: 76px; border-radius: 17px; display: block; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="app-icon" src="images/icon.png" alt="SHIORI のアイコン" width="76" height="76">
+    <div class="badge">BETA</div>
+    <h1>SHIORI</h1>
+    <p>時差・日付またぎで迷わない、旅程の「数直線」アプリ</p>
+  </header>
+
+  <p class="lead">海外旅行の旅程を<b>1日＝1本の時間の数直線</b>に並べて、「何時〜何時：何をする」のブロックで埋めていく iPhone アプリです。予定はチケットに書いてあるとおり<b>現地の日時とタイムゾーン</b>で入れるだけ。フライトで日付が変わっても、時差や夏時間があっても、行の長さと時刻の切り替わりを自動で計算します。</p>
+
+  <h2>できること</h2>
+  <div class="features">
+    <div class="card">
+      <h3>1日＝1本の数直線</h3>
+      <p>日ごとの横向きの数直線を縦に並べて表示。空いている時間がひと目で分かり、空きをタップするとその時刻から予定を追加できます。</p>
+    </div>
+    <div class="card">
+      <h3>チケットどおりに入力</h3>
+      <p>「1/22 22:00 東京発 → 1/23 7:00 アテネ着」のように、現地の日時とタイムゾーンをそのまま入力。所要時間はその場で表示されます。</p>
+    </div>
+    <div class="card">
+      <h3>時差で伸び縮みする行</h3>
+      <p>「現地時間」表示では、西へ飛ぶ日は行が長く、東へ飛ぶ日は短くなります。時計が切り替わる地点には「−7h」のような印が付きます。</p>
+    </div>
+    <div class="card">
+      <h3>日本時間でも、どの都市の時間でも</h3>
+      <p>表示を「東京時間」や好きな都市の時間に切り替えられます。予定の詳細には、現地の時刻と日本時間を並べて表示します。</p>
+    </div>
+    <div class="card">
+      <h3>旅の仲間と共有・一緒に編集</h3>
+      <p>旅行ごとに iCloud で共有。招待リンクを LINE やメッセージで送れます。相手の権限は「閲覧のみ」か「編集可」から選べます。</p>
+    </div>
+    <div class="card">
+      <h3>リンクとメモ</h3>
+      <p>予約確認やお店のページなど、タイトル付きのリンクを予定ごとに複数登録。場所は地図アプリで開けます。</p>
+    </div>
+  </div>
+
+  <h2 id="screens">画面イメージ</h2>
+  <div class="shots">
+    <figure>
+      <img src="images/timeline.jpg" alt="現地時間の表示。東京からアテネへ飛ぶ1月22日の行が長くなり、22時の地点に −7h の印が付いている" width="552" height="1124" loading="lazy">
+      <figcaption>現地時間で表示</figcaption>
+    </figure>
+    <figure>
+      <img src="images/home-time.jpg" alt="東京時間で固定した表示。すべての行が0時から24時" width="552" height="1124" loading="lazy">
+      <figcaption>東京時間で表示</figcaption>
+    </figure>
+    <figure>
+      <img src="images/edit.jpg" alt="予定の入力画面。開始と終了の日時とタイムゾーン、日本時間、所要時間が表示されている" width="552" height="1124" loading="lazy">
+      <figcaption>現地の日時で入力</figcaption>
+    </figure>
+  </div>
+  <p class="note">※ 開発中の画面です。旅程はサンプルです。</p>
+
+  <h2>テスト版（TestFlight）について</h2>
+  <ul>
+    <li>いまは Apple の <b>TestFlight</b> で、テスト版を配布しています。App Store で「TestFlight」アプリを入れてから、招待されたリンクを開いてください。</li>
+    <li>旅行を共有するには、iPhone が iCloud にサインインしている必要があります。</li>
+    <li>気づいたことは、TestFlight アプリの「フィードバックを送信」か、下のメールアドレスにお送りください。</li>
+  </ul>
+
+  <h2>動作環境</h2>
+  <table>
+    <tr><th>公開状況</th><td>テスト中（TestFlight）</td></tr>
+    <tr><th>対応OS</th><td>iOS 17.0 以降</td></tr>
+    <tr><th>対応端末</th><td>iPhone（縦・横）</td></tr>
+    <tr><th>価格</th><td>無料</td></tr>
+    <tr><th>アカウント</th><td>登録・ログインは不要です（共有には iCloud を使います）</td></tr>
+  </table>
+
+  <h2>お問い合わせ</h2>
+  <p>ご意見・ご要望・不具合のご報告は、下のメールアドレスまでお願いします。</p>
+  <div class="card">
+    <p class="mail"><a href="mailto:monaka.owners.club@gmail.com">monaka.owners.club@gmail.com</a></p>
+    <p class="note">お返事までに数日かかることがあります。不具合のご報告の際は、<b>iPhone の機種</b>・<b>iOS のバージョン</b>・<b>どの画面で何をしたときに起きたか</b>を添えていただけると助かります。</p>
+  </div>
+
+  <h2>プライバシー</h2>
+  <p>SHIORI は、氏名やメールアドレスなどの個人情報を運営者のもとへ集めません。旅行のデータは、お使いの端末とご自身の iCloud に保存されます。詳しくは <a href="privacy.html">プライバシーポリシー</a> をご覧ください。</p>
+
+  <footer>
+    SHIORI 運営
+  </footer>
+
+</div>
+</body>
+</html>
